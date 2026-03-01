@@ -227,13 +227,14 @@ input[type="number"] {
   background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
+  padding: 12px 14px;
   color: var(--text);
-  font-size: 0.92rem;
+  font-size: 1rem; /* 16px — prevents iOS auto-zoom */
   font-family: inherit;
   transition: border-color var(--transition), background var(--transition);
   outline: none;
   width: 100%;
+  -webkit-appearance: none;
 }
 
 input[type="text"]:focus,
@@ -256,7 +257,11 @@ input[type="number"]::placeholder { color: var(--text-muted); }
   grid-template-columns: 1fr 1fr;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+  .slider-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 500px) {
   .slider-grid, .slider-grid--wide { grid-template-columns: 1fr; }
 }
 
@@ -307,13 +312,14 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--pink);
   box-shadow: 0 0 10px rgba(233,30,140,0.5);
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
+  touch-action: manipulation;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
@@ -322,7 +328,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 18px; height: 18px;
+  width: 22px; height: 22px;
   border-radius: 50%;
   background: var(--pink);
   border: none;
@@ -581,4 +587,78 @@ input[type="range"]::-moz-range-thumb {
   0%   { content: '.'; }
   33%  { content: '..'; }
   66%  { content: '...'; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .hero {
+    padding: 48px 20px 36px;
+  }
+
+  .container {
+    padding: 0 14px 60px;
+  }
+
+  .card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .card-header {
+    margin-bottom: 18px;
+  }
+
+  .field-group {
+    margin-bottom: 18px;
+  }
+
+  /* Full-width submit button */
+  .submit-wrap {
+    margin: 12px 0 32px;
+  }
+
+  .btn-predict {
+    width: 100%;
+  }
+
+  .btn-inner {
+    justify-content: center;
+    padding: 16px 24px;
+  }
+
+  /* Result panel */
+  .result-panel {
+    padding: 32px 18px 28px;
+    border-radius: 12px;
+  }
+
+  .result-prob-wrap {
+    max-width: 100%;
+  }
+
+  .result-insights {
+    max-width: 100%;
+  }
+
+  /* Bigger tap target on sliders */
+  input[type="range"] {
+    height: 6px;
+    padding: 8px 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Reset button full width */
+  .btn-reset {
+    width: 100%;
+    padding: 13px 24px;
+  }
 }
