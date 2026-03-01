@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Is Blind — Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Netflix Original</p>
+      <h1 class="hero-title">Love Is Blind</h1>
+      <p class="hero-subtitle">AI Prediction Oracle</p>
+      <p class="hero-desc">Enter the details. The pods have spoken. Will they say <em>I do</em>?</p>
+      <div class="hero-divider">
+        <span></span><span class="diamond">◆</span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <form id="prediction-form">
+
+      <!-- ── PERSON 1 ── -->
+      <section class="card person-card" data-person="1">
+        <div class="card-header">
+          <div class="person-badge person-badge--1">1</div>
+          <div>
+            <h2 class="card-title">Person One</h2>
+            <p class="card-sub">Individual attributes</p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field">
+            <label for="p1_name">Name / Nickname <span class="optional">(optional)</span></label>
+            <input type="text" id="p1_name" placeholder="e.g. Jessica" />
+          </div>
+          <div class="field">
+            <label for="p1_age">Age</label>
+            <input type="number" id="p1_age" name="p1_age" min="18" max="60" placeholder="28" required />
+          </div>
+        </div>
+
+        <div class="slider-grid">
+          <div class="slider-field">
+            <label>Emotional Maturity <span class="val-badge" id="p1_emotional_val">3</span></label>
+            <p class="slider-hint">Handles feelings, avoids shutting down</p>
+            <input type="range" id="p1_emotional" name="p1_emotional" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p1_emotional_val')" />
+            <div class="range-labels"><span>Low</span><span>High</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Communication Skill <span class="val-badge" id="p1_communication_val">3</span></label>
+            <p class="slider-hint">Expresses needs clearly, actively listens</p>
+            <input type="range" id="p1_communication" name="p1_communication" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p1_communication_val')" />
+            <div class="range-labels"><span>Poor</span><span>Excellent</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Readiness to Commit <span class="val-badge" id="p1_commitment_val">3</span></label>
+            <p class="slider-hint">Truly wants marriage, not just the show</p>
+            <input type="range" id="p1_commitment" name="p1_commitment" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p1_commitment_val')" />
+            <div class="range-labels"><span>Hesitant</span><span>All in</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PERSON 2 ── -->
+      <section class="card person-card" data-person="2">
+        <div class="card-header">
+          <div class="person-badge person-badge--2">2</div>
+          <div>
+            <h2 class="card-title">Person Two</h2>
+            <p class="card-sub">Individual attributes</p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field">
+            <label for="p2_name">Name / Nickname <span class="optional">(optional)</span></label>
+            <input type="text" id="p2_name" placeholder="e.g. Mark" />
+          </div>
+          <div class="field">
+            <label for="p2_age">Age</label>
+            <input type="number" id="p2_age" name="p2_age" min="18" max="60" placeholder="30" required />
+          </div>
+        </div>
+
+        <div class="slider-grid">
+          <div class="slider-field">
+            <label>Emotional Maturity <span class="val-badge" id="p2_emotional_val">3</span></label>
+            <p class="slider-hint">Handles feelings, avoids shutting down</p>
+            <input type="range" id="p2_emotional" name="p2_emotional" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p2_emotional_val')" />
+            <div class="range-labels"><span>Low</span><span>High</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Communication Skill <span class="val-badge" id="p2_communication_val">3</span></label>
+            <p class="slider-hint">Expresses needs clearly, actively listens</p>
+            <input type="range" id="p2_communication" name="p2_communication" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p2_communication_val')" />
+            <div class="range-labels"><span>Poor</span><span>Excellent</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Readiness to Commit <span class="val-badge" id="p2_commitment_val">3</span></label>
+            <p class="slider-hint">Truly wants marriage, not just the show</p>
+            <input type="range" id="p2_commitment" name="p2_commitment" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'p2_commitment_val')" />
+            <div class="range-labels"><span>Hesitant</span><span>All in</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── COUPLE DYNAMICS ── -->
+      <section class="card couple-card">
+        <div class="card-header">
+          <div class="couple-icon">♡</div>
+          <div>
+            <h2 class="card-title">Couple Dynamics</h2>
+            <p class="card-sub">The relationship between them</p>
+          </div>
+        </div>
+
+        <div class="slider-grid slider-grid--wide">
+
+          <div class="slider-field">
+            <label>Physical Attraction <span class="val-badge" id="physical_attraction_val">3</span></label>
+            <p class="slider-hint">After the reveal — the real test begins</p>
+            <input type="range" id="physical_attraction" name="physical_attraction" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'physical_attraction_val')" />
+            <div class="range-labels"><span>Lukewarm</span><span>Undeniable</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Emotional Connection <span class="val-badge" id="emotional_connection_val">3</span></label>
+            <p class="slider-hint">Depth of bond formed in the pods</p>
+            <input type="range" id="emotional_connection" name="emotional_connection" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'emotional_connection_val')" />
+            <div class="range-labels"><span>Surface</span><span>Profound</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Shared Values & Life Goals <span class="val-badge" id="shared_values_val">3</span></label>
+            <p class="slider-hint">Kids, religion, finances, lifestyle</p>
+            <input type="range" id="shared_values" name="shared_values" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'shared_values_val')" />
+            <div class="range-labels"><span>Clashing</span><span>Aligned</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Lifestyle Compatibility <span class="val-badge" id="lifestyle_compat_val">3</span></label>
+            <p class="slider-hint">Daily routines, social life, living style</p>
+            <input type="range" id="lifestyle_compat" name="lifestyle_compat" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'lifestyle_compat_val')" />
+            <div class="range-labels"><span>Mismatch</span><span>Perfect fit</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Conflict Frequency <span class="val-badge" id="conflict_frequency_val">3</span></label>
+            <p class="slider-hint">How often they argue or butt heads</p>
+            <input type="range" id="conflict_frequency" name="conflict_frequency" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'conflict_frequency_val')" />
+            <div class="range-labels"><span>Rarely</span><span>Constantly</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Conflict Resolution <span class="val-badge" id="conflict_resolution_val">3</span></label>
+            <p class="slider-hint">Ability to come back together after a fight</p>
+            <input type="range" id="conflict_resolution" name="conflict_resolution" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'conflict_resolution_val')" />
+            <div class="range-labels"><span>Stonewalling</span><span>Healthy</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Family &amp; Friends Approval <span class="val-badge" id="family_approval_val">3</span></label>
+            <p class="slider-hint">External support from loved ones</p>
+            <input type="range" id="family_approval" name="family_approval" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'family_approval_val')" />
+            <div class="range-labels"><span>Disapprove</span><span>Full support</span></div>
+          </div>
+
+          <div class="slider-field">
+            <label>Doubt / Pressure at Altar <span class="val-badge" id="altar_pressure_val">3</span></label>
+            <p class="slider-hint">Cold feet, hesitation, external doubts</p>
+            <input type="range" id="altar_pressure" name="altar_pressure" min="1" max="5" step="0.5" value="3" oninput="syncVal(this,'altar_pressure_val')" />
+            <div class="range-labels"><span>Confident</span><span>Major doubts</span></div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-predict" id="submit-btn">
+          <span class="btn-inner">
+            <span class="btn-text">Ask the Oracle</span>
+            <span class="btn-icon">◆</span>
+          </span>
+        </button>
+      </div>
+
+    </form>
+
+    <!-- ── RESULT ── -->
+    <div id="result-panel" class="result-panel hidden">
+      <div class="result-glow" id="result-glow"></div>
+
+      <div class="result-names" id="result-names"></div>
+
+      <div class="result-verdict-wrap">
+        <p class="result-label">The Oracle predicts...</p>
+        <div class="result-verdict" id="result-verdict"></div>
+      </div>
+
+      <div class="result-prob-wrap">
+        <div class="result-prob-bar-bg">
+          <div class="result-prob-bar" id="result-prob-bar"></div>
+        </div>
+        <p class="result-prob-text" id="result-prob-text"></p>
+      </div>
+
+      <p class="result-confidence" id="result-confidence"></p>
+
+      <div class="result-insights" id="result-insights"></div>
+
+      <div class="result-disclaimer">
+        ⚠ For entertainment only. Trained on synthetic data inspired by the show's patterns.
+      </div>
+
+      <button class="btn-reset" onclick="resetForm()">Try Another Couple</button>
+    </div>
+
+    <div id="error-msg" class="error-msg hidden"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with ML &amp; mayhem &nbsp;◆&nbsp; Not affiliated with Netflix or the Love Is Blind production</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
