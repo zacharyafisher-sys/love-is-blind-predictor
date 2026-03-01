@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import pickle
+import os
 
 app = Flask(__name__)
 
@@ -107,8 +109,19 @@ def train_model():
     return model, scaler
 
 
-print("Training Love Is Blind prediction model...")
-model, scaler = train_model()
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model.pkl')
+
+if os.path.exists(MODEL_PATH):
+    print("Loading pre-trained model...")
+    with open(MODEL_PATH, 'rb') as f:
+        model, scaler = pickle.load(f)
+    print("Model loaded.")
+else:
+    print("Training Love Is Blind prediction model...")
+    model, scaler = train_model()
+    with open(MODEL_PATH, 'wb') as f:
+        pickle.dump((model, scaler), f)
+    print("Model trained and saved.")
 
 
 def get_confidence_label(prob):
